@@ -1,3 +1,4 @@
+import { CategoryTiles } from "@/components/CategoryTiles";
 import { FeaturedCarousel } from "@/components/FeaturedCarousel";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ALL_CATEGORIES_QUERY } from "@/sanity/lib/queries/categories";
@@ -87,6 +88,25 @@ export default async function Home({ searchParams }: PageProps) {
       </Suspense>
 
       {/* Page Banner */}
+      <div className="border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950 w-full">
+        <div className="mx-auto px-4 pt-8 max-w-[1900px]">
+          <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+            Shop {categorySlug ? categorySlug : "All Products"}
+          </h1>
+
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            Premium furniture for your home
+          </p>
+        </div>
+
+        {/* Category Tiles - Full width */}
+        <div className="mt-6 mx-auto max-w-[1900px]">
+          <CategoryTiles
+            categories={categories}
+            activeCategory={categorySlug || undefined}
+          />
+        </div>
+      </div>
 
       {/* Category Title */}
 
